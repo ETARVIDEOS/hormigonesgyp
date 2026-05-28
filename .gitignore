@@ -1,0 +1,12 @@
+# Claude internal
+.claude/
+
+# Archivos de referencia / trabajo no pertenecientes al sitio
+CLAUDE_DIVALCO.md
+MULTIMEDIA GYP/
+MULTIMEDIA GYP-*.zip
+whatsapp-button.png
+
+# OS
+.DS_Store
+Thumbs.db
