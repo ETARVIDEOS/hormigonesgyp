@@ -41,15 +41,16 @@ Server local: `npx serve -l 3456 .` (ver `.claude/launch.json`)
 - **Ubicación:** Maule, Región del Maule, Chile
 - **Cobertura:** Linares a Camarico (NO zonas costeras: Cauquenes, Pelluhue, Chanco)
 - **Comunas:** San Clemente, Colbún, Pencahue, Pelarco, San Rafael, Linares, Camarico y aledañas
-- **Horario:** Lunes a Viernes 08:00–17:00 hrs (no sábados)
-- **Experiencia:** Más de 25 años en el rubro (dueño de la empresa)
+- **Horario:** Lunes a Sábado — coordinamos según las necesidades del cliente
+- **Experiencia:** Más de 25 años en el rubro
 - **Compromiso:** "Entregar productos de excelencia con un servicio cercano y confiable a la comunidad"
 
 ---
 
-## Contacto (placeholders — actualizar con datos reales)
+## Contacto
 
-- **WhatsApp:** `+56912345678` → URL: `https://wa.me/56912345678`
+- **WhatsApp:** `+56981578903` → URL: `https://wa.me/56981578903`
+- **Llamados:** `+56996747681`
 - **Email:** `contacto@hormigonesgyp.cl`
 
 > Todos los botones "Cotizar" y "Contactar" abren WhatsApp.  
@@ -60,12 +61,12 @@ Server local: `npx serve -l 3456 .` (ver `.claude/launch.json`)
 ## Secciones del sitio (en orden)
 
 1. `#inicio` — Hero con video de fondo + typing effect
-2. Stats — Banda roja con contadores animados (25+ años, 500+ proyectos, 15+ comunas, 5 camiones)
-3. `#servicios` — 4 tarjetas: Premezclado, Bombeo, Cobertura, Asesoría
+2. Stats — Banda roja con contadores (25+ años, 500+ proyectos, 15+ comunas) — **3 ítems, grid 3 columnas**
+3. `#servicios` — 5 tarjetas: Premezclado, Bombeo, Cobertura, Asesoría, Cierres Perimetrales — **5.° ítem centrado en desktop (grid-column: 2/4), reseteado en tablet/mobile**
 4. `#nosotros` — Split layout foto + texto + lista de valores
 5. `#galeria` — Grid de fotos y videos (fondo oscuro)
 6. `#cobertura` — Mapa Google Maps + lista de comunas
-7. Horario — Banda oscura con horario, teléfono, email
+7. Horario — Banda oscura: Horario · WhatsApp · Llamados · Email — **4 ítems, grid 4 columnas desktop / 2 tablet / 1 mobile**
 8. `#contacto` — CTA band roja → WhatsApp + email
 9. Footer — 4 columnas: marca, empresa, servicios, contacto
 
@@ -144,8 +145,26 @@ Agregar clase al elemento HTML y se activa al hacer scroll:
 ## Checklist para nuevas páginas/cambios
 
 - [ ] Paleta respeta variables CSS de `style.css`
-- [ ] Botones de contacto apuntan a WhatsApp correcto
+- [ ] Botones de contacto apuntan a WhatsApp correcto (+56981578903)
 - [ ] robots.txt y sitemap.xml actualizados si se agregan páginas
 - [ ] Animaciones de entrada en secciones nuevas
-- [ ] Responsive mobile verificado (900px y 600px)
+- [ ] Responsive mobile verificado (375px · 768px · 1024px)
 - [ ] `lucide.createIcons()` ejecutado al final
+- [ ] `html` y `body` tienen `overflow-x: hidden`
+- [ ] Grids con columnas = número de ítems reales
+- [ ] `grid-column` con span reseteado en todas las media queries
+- [ ] Ningún `right/bottom` negativo sin `overflow:hidden` en el padre
+
+---
+
+## Lecciones aprendidas — Responsive mobile
+
+Errores ocurridos en este proyecto y cómo evitarlos:
+
+| Error | Síntoma | Fix |
+|-------|---------|-----|
+| `html` sin `overflow-x:hidden` | Página se desplaza a la derecha en mobile | Agregar a `html` Y `body` |
+| Grid con más columnas que ítems | Espacio vacío a la derecha | `repeat(N_items, 1fr)` siempre |
+| `grid-column: X/Y` sin reset en media query | Cards no apilan, se salen del contenedor | Agregar `grid-column: auto` en cada breakpoint |
+| `right: -20px` sin `overflow:hidden` en el padre | Elemento desborda el viewport | Agregar `overflow:hidden` al contenedor |
+| Grid con N columnas pero N+1 ítems | Ítem solitario en nueva fila desalineado | Actualizar el grid al agregar/quitar ítems |
